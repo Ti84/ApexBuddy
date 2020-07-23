@@ -8,8 +8,9 @@ const apiKey = config.get('apexApiKey');
 // @desc Get player data.
 // @access Public
 router.get('/:platform/:playerName', async(req, response) => {
-  const platform = req.params.platform;
-  const playerName = req.params.playerName;
+  // TODO: Add validation for platform to equal origin, xbl, or psn.
+  const platform = req.params.platform; //origin
+  const playerName = req.params.playerName; //ScotchTapeBitch
 
   const headers = {
     'TRN-Api-Key': apiKey,
