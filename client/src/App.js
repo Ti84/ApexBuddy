@@ -1,12 +1,7 @@
 import React, { useState } from 'react';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
 import './App.css';
+import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
+import Landing from './components/Landing';
 
 function App() {
   const [platform, setPlatform] = useState('origin');
@@ -44,49 +39,29 @@ function App() {
   const handleNameChange = e => {
     var key = e.keyCode || e.charCode;
 
-    if((key !== 8 && key !== 46) && e.target.value.length >= 14) {
+    if (key !== 8 && key !== 46 && e.target.value.length >= 16) {
       return;
     }
 
     setPlayerName(e.target.value);
-  }
+  };
 
   return (
     <div className="App">
-      <form onSubmit={handlePlayerSearch}>
-        <FormControl component="fieldset">
-          <FormLabel component="legend">Platform</FormLabel>
-          <RadioGroup
-            aria-label="platform"
-            name="platform"
-            value={platform}
-            onChange={(e) => setPlatform(e.target.value)}
-          >
-            <FormControlLabel value="origin" control={<Radio />} label="PC" />
-            <FormControlLabel value="xbl" control={<Radio />} label="Xbox" />
-            <FormControlLabel
-              value="psn"
-              control={<Radio />}
-              label="Playstation"
+      <Router>
+        <Switch>
+          <Route path="/">
+            <Landing
+              handlePlayerSearch={handlePlayerSearch}
+              platform={platform}
+              handlePlatformChange={setPlatform}
+              playerName={playerName}
+              validationError={validationError}
+              handleNameChange={handleNameChange}
             />
-          </RadioGroup>
-        </FormControl>
-        <TextField
-          error={validationError ? true : false}
-          id="standard-basic"
-          variant="outlined"
-          label="Player Name"
-          value={playerName}
-          onChange={(e) => handleNameChange(e)}
-          helperText={validationError}
-        />
-        <Button variant="contained" color="primary" type="submit">
-          Search
-        </Button>
-      </form>
-
-      {JSON.stringify(playerData)}
-
+          </Route>
+        </Switch>
+      </Router>
     </div>
   );
 }
