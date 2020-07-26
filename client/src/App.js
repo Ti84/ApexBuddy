@@ -12,9 +12,26 @@ function App() {
   const [platform, setPlatform] = useState('origin');
   const [playerName, setPlayerName] = useState('');
   const [playerData, setPlayerData] = useState(null);
+  const [validationError, setValidationError] = useState('');
 
   const handlePlayerSearch = async (e) => {
     e.preventDefault();
+    const regexCheck = /^[0-9a-zA-Z]+$/;
+
+    if (validationError) {
+      setValidationError('');
+    }
+
+    if (!playerName) {
+      setValidationError('Username required.');
+      return;
+    } else if (playerName.length < 4 || playerName.length > 14) {
+      setValidationError('Username must be between 4 - 14 characters.');
+      return;
+    } else if (!playerName.match(regexCheck)) {
+      setValidationError('Player name can only contain letters or numbers.');
+    }
+
     try {
       const res = await fetch(`/players/${platform}/${playerName}`);
       const data = await res.json();
@@ -23,6 +40,16 @@ function App() {
       console.error(e);
     }
   };
+
+  const handleNameChange = e => {
+    var key = e.keyCode || e.charCode;
+
+    if((key !== 8 && key !== 46) && e.target.value.length >= 14) {
+      return;
+    }
+
+    setPlayerName(e.target.value);
+  }
 
   return (
     <div className="App">
@@ -45,10 +72,13 @@ function App() {
           </RadioGroup>
         </FormControl>
         <TextField
+          error={validationError ? true : false}
           id="standard-basic"
-          label="Standard"
+          variant="outlined"
+          label="Player Name"
           value={playerName}
-          onChange={(e) => setPlayerName(e.target.value)}
+          onChange={(e) => handleNameChange(e)}
+          helperText={validationError}
         />
         <Button variant="contained" color="primary" type="submit">
           Search
