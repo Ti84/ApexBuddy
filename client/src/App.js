@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import './App.css';
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 import Landing from './components/Landing';
+// import useAppStyles from './useAppStyles';
 
 function App() {
   const [platform, setPlatform] = useState('origin');
   const [playerName, setPlayerName] = useState('');
   const [playerData, setPlayerData] = useState(null);
+  // const classes = useAppStyles();
 
   const handlePlayerSearch = async () => {
     try {

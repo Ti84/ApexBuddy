@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
+import IconButton from '@material-ui/core/IconButton';
+import SearchIcon from '@material-ui/icons/Search';
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
+import useLandingStyles from './useLandingStyles';
+import Paper from '@material-ui/core/Paper';
+import Divider from '@material-ui/core/Divider';
+import { Typography } from '@material-ui/core';
 
 const Landing = ({
   handlePlayerSearch,
@@ -15,6 +18,7 @@ const Landing = ({
   playerName,
 }) => {
   const [validationError, setValidationError] = useState('');
+  const classes = useLandingStyles();
 
   const playerSearchValidation = () => {
     const regexCheck = /^[0-9a-zA-Z]+$/;
@@ -55,41 +59,49 @@ const Landing = ({
   };
 
   return (
-    <>
-      <form onSubmit={onPlayerSearch}>
-        <FormControl component="fieldset">
-          <FormLabel component="legend">Platform</FormLabel>
-          <RadioGroup
-            aria-label="platform"
-            name="platform"
-            value={platform}
-            onChange={(e) => handlePlatformChange(e.target.value)}
+    <section className={classes.root}>
+      <Typography variant="h3" component="h1" className={classes.title}>
+        Apex Buddy
+      </Typography>
+      <Paper className={classes.paper}>
+        <form onSubmit={onPlayerSearch}>
+          <TextField
+            className={classes.input}
+            error={validationError ? true : false}
+            placeholder="Player Name"
+            value={playerName}
+            onChange={(e) => onNameChange(e)}
+            helperText={validationError}
+            InputProps={{ disableUnderline: true }}
+          />
+          <IconButton
+            type="submit"
+            aria-label="search"
+            className={classes.iconButton}
           >
-            <FormControlLabel value="origin" control={<Radio />} label="PC" />
-            <FormControlLabel value="xbl" control={<Radio />} label="Xbox" />
-            <FormControlLabel
-              value="psn"
-              control={<Radio />}
-              label="Playstation"
-            />
-          </RadioGroup>
-        </FormControl>
-        <TextField
-          error={validationError ? true : false}
-          id="standard-basic"
-          variant="outlined"
-          label="Player Name"
-          value={playerName}
-          onChange={(e) => onNameChange(e)}
-          helperText={validationError}
-        />
-        <Button variant="contained" color="primary" type="submit">
-          Search
-        </Button>
-      </form>
+            <SearchIcon />
+          </IconButton>
+          <FormControl className={classes.formControl}>
+            {' '}
+            {/* className={classes.formControl} */}
+            {/* <Label id="platform-label">Platform</Label> */}
+            <Select
+              labelId="platform-label"
+              value={platform}
+              onChange={(e) => handlePlatformChange(e.target.value)}
+              className={classes.select}
+              disableUnderline
+            >
+              <MenuItem value={'origin'}>Origin</MenuItem>
+              <MenuItem value={'xbl'}>Xbox</MenuItem>
+              <MenuItem value={'psn'}>Playstation</MenuItem>
+            </Select>
+          </FormControl>
+        </form>
 
-      {/* {JSON.stringify(playerData)} */}
-    </>
+        {/* {JSON.stringify(playerData)} */}
+      </Paper>
+    </section>
   );
 };
 
