@@ -22,6 +22,7 @@ const useLandingStyles = makeStyles((theme) => ({
       top: 55,
       left: -5,
       whiteSpace: 'nowrap',
+      backgroundColor: `rgba(255,255,255, .5)`
     },
   },
   iconButton: {
