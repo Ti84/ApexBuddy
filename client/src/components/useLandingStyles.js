@@ -3,7 +3,8 @@ import { makeStyles } from '@material-ui/core';
 const useLandingStyles = makeStyles((theme) => ({
   landing: {
     textAlign: 'center',
-    marginTop: 150,
+    overflow: 'auto',
+    height: '100vh'
   },
   paper: {
     padding: '2px 4px',
@@ -49,7 +50,8 @@ const useLandingStyles = makeStyles((theme) => ({
     minWidth: 150
   },
   title: {
-    marginBottom: 15
+    marginBottom: 15,
+    color: 'white'
   },
   form: {
     display: 'flex',
@@ -58,6 +60,9 @@ const useLandingStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('sm')]: {
       width: '90vw'
     }
+  },
+  searchSection: {
+    marginTop: '35vh'
   }
 }));
 

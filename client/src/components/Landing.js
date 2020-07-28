@@ -8,6 +8,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import useLandingStyles from './useLandingStyles';
 import Paper from '@material-ui/core/Paper';
 import { Typography } from '@material-ui/core';
+// import BackgroundImage from './BackgroundImage';
 
 const Landing = ({
   handlePlayerSearch,
@@ -58,49 +59,52 @@ const Landing = ({
   };
 
   return (
-    <section className={classes.landing}>
-      <Typography variant="h3" component="h1" className={classes.title}>
-        Apex Buddy
-      </Typography>
-      <Paper className={classes.paper}>
-        <form onSubmit={onPlayerSearch} className={classes.form}>
-          <TextField
-            className={classes.input}
-            error={validationError ? true : false}
-            placeholder="Player Name"
-            value={playerName}
-            onChange={(e) => onNameChange(e)}
-            helperText={validationError}
-            InputProps={{ disableUnderline: true }}
-          />
-          <IconButton
-            type="submit"
-            aria-label="search"
-            className={classes.iconButton}
-          >
-            <SearchIcon />
-          </IconButton>
-          <FormControl className={classes.formControl}>
-            {' '}
-            {/* className={classes.formControl} */}
-            {/* <Label id="platform-label">Platform</Label> */}
-            <Select
-              labelId="platform-label"
-              value={platform}
-              onChange={(e) => handlePlatformChange(e.target.value)}
-              className={classes.select}
-              disableUnderline
+    <div className={classes.landing}>
+      <section className={classes.searchSection}>
+        <Typography variant="h3" component="h1" className={classes.title}>
+          Apex Buddy
+        </Typography>
+        <Paper className={classes.paper}>
+          <form onSubmit={onPlayerSearch} className={classes.form}>
+            <TextField
+              className={classes.input}
+              error={validationError ? true : false}
+              placeholder="Player Name"
+              value={playerName}
+              onChange={(e) => onNameChange(e)}
+              helperText={validationError}
+              InputProps={{ disableUnderline: true }}
+            />
+            <IconButton
+              type="submit"
+              aria-label="search"
+              className={classes.iconButton}
             >
-              <MenuItem value={'origin'}>Origin</MenuItem>
-              <MenuItem value={'xbl'}>Xbox</MenuItem>
-              <MenuItem value={'psn'}>Playstation</MenuItem>
-            </Select>
-          </FormControl>
-        </form>
+              <SearchIcon />
+            </IconButton>
+            <FormControl className={classes.formControl}>
+              {' '}
+              {/* className={classes.formControl} */}
+              {/* <Label id="platform-label">Platform</Label> */}
+              <Select
+                labelId="platform-label"
+                value={platform}
+                onChange={(e) => handlePlatformChange(e.target.value)}
+                className={classes.select}
+                disableUnderline
+              >
+                <MenuItem value={'origin'}>Origin</MenuItem>
+                <MenuItem value={'xbl'}>Xbox</MenuItem>
+                <MenuItem value={'psn'}>Playstation</MenuItem>
+              </Select>
+            </FormControl>
+          </form>
 
-        {/* {JSON.stringify(playerData)} */}
-      </Paper>
-    </section>
+          {/* {JSON.stringify(playerData)} */}
+        </Paper>
+      </section>
+      {/* <BackgroundImage imgUrl="https://wallpapercave.com/wp/wp4573120.png"/> */}
+    </div>
   );
 };
 

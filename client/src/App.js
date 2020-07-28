@@ -21,19 +21,21 @@ function App() {
 
   return (
     <div className="App" className={classes.app}>
-      <Router>
-        <Switch>
-          <Route path="/">
-            <Landing
-              handlePlayerSearch={handlePlayerSearch}
-              platform={platform}
-              handlePlatformChange={setPlatform}
-              playerName={playerName}
-              handleNameChange={setPlayerName}
-            />
-          </Route>
-        </Switch>
-      </Router>
+      <div className={classes.appContainer}>
+        <Router>
+          <Switch>
+            <Route path="/">
+              <Landing
+                handlePlayerSearch={handlePlayerSearch}
+                platform={platform}
+                handlePlatformChange={setPlatform}
+                playerName={playerName}
+                handleNameChange={setPlayerName}
+              />
+            </Route>
+          </Switch>
+        </Router>
+      </div>
     </div>
   );
 }
