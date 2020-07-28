@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
-import Landing from './components/Landing';
+import Landing from './components/landing/Landing';
 import useAppStyles from './useAppStyles';
+import Layout from './components/layout/Layout';
 
 function App() {
   const [platform, setPlatform] = useState('origin');
@@ -21,7 +22,7 @@ function App() {
 
   return (
     <div className="App" className={classes.app}>
-      <div className={classes.appContainer}>
+      <Layout>
         <Router>
           <Switch>
             <Route path="/">
@@ -35,7 +36,7 @@ function App() {
             </Route>
           </Switch>
         </Router>
-      </div>
+      </Layout>
     </div>
   );
 }

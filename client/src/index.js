@@ -12,7 +12,7 @@ import * as serviceWorker from './serviceWorker';
 //   },
 // });
 
-{/* <ThemeProvider></ThemeProvider> */}
+/* <ThemeProvider></ThemeProvider> */
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
