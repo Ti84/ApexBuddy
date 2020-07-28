@@ -7,7 +7,6 @@ import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import useLandingStyles from './useLandingStyles';
 import Paper from '@material-ui/core/Paper';
-import Divider from '@material-ui/core/Divider';
 import { Typography } from '@material-ui/core';
 
 const Landing = ({
@@ -59,12 +58,12 @@ const Landing = ({
   };
 
   return (
-    <section className={classes.root}>
+    <section className={classes.landing}>
       <Typography variant="h3" component="h1" className={classes.title}>
         Apex Buddy
       </Typography>
       <Paper className={classes.paper}>
-        <form onSubmit={onPlayerSearch}>
+        <form onSubmit={onPlayerSearch} className={classes.form}>
           <TextField
             className={classes.input}
             error={validationError ? true : false}

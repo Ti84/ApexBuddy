@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 import Landing from './components/Landing';
-// import useAppStyles from './useAppStyles';
+import useAppStyles from './useAppStyles';
 
 function App() {
   const [platform, setPlatform] = useState('origin');
   const [playerName, setPlayerName] = useState('');
   const [playerData, setPlayerData] = useState(null);
-  // const classes = useAppStyles();
+  const classes = useAppStyles();
 
   const handlePlayerSearch = async () => {
     try {
@@ -20,7 +20,7 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <div className="App" className={classes.app}>
       <Router>
         <Switch>
           <Route path="/">

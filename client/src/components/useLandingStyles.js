@@ -1,26 +1,25 @@
 import { makeStyles } from '@material-ui/core';
 
 const useLandingStyles = makeStyles((theme) => ({
-  root: {
+  landing: {
     textAlign: 'center',
     marginTop: 150,
   },
   paper: {
     padding: '2px 4px',
-    display: 'flex',
-    alignItems: 'center',
+    display: 'inline-block',
     marginLeft: 'auto',
-    marginRight: 'auto',
-    width: 450,
+    marginRight: 'auto'
   },
   input: {
     marginLeft: theme.spacing(1),
-    flex: 1,
+    flex: 2,
     padding: 10,
     width: 200,
     '& .MuiFormHelperText-root': {
       position: 'absolute',
-      top: 40,
+      top: 55,
+      left: -5,
       whiteSpace: 'nowrap',
     },
   },
@@ -47,10 +46,18 @@ const useLandingStyles = makeStyles((theme) => ({
     marginLeft: 12,
     flex: 1,
     padding: 10,
-    width: 150
+    minWidth: 150
   },
   title: {
     marginBottom: 15
+  },
+  form: {
+    display: 'flex',
+    width: 500,
+    alignItems: 'center',
+    [theme.breakpoints.down('sm')]: {
+      width: '90vw'
+    }
   }
 }));
 
