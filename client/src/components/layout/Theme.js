@@ -1,10 +1,11 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core';
+import { makeStyles, ThemeProvider, createMuiTheme } from '@material-ui/core';
+import useLegend, { ApexLegendContext } from './useLegend';
 
 const useThemeStyles = makeStyles((theme) => ({
   theme: {
     height: '100vh',
-    background: `url('https://wallpapercave.com/wp/wp4573120.png') no-repeat 50% fixed`,
+    background: props => `url(${props.imgUrl}) no-repeat 50% fixed`,
     boxShadow: `0px 0px 150px #274669 inset`,
     position: 'relative',
     zIndex: 0,
@@ -25,11 +26,18 @@ const useThemeStyles = makeStyles((theme) => ({
 }));
 
 const Theme = ({ children }) => {
-  const classes = useThemeStyles();
+  const [apexLegendData, setApexLegend] = useLegend('wraith');
+  const classes = useThemeStyles(apexLegendData);
+  const theme = createMuiTheme();
+
   return (
-    <div className={classes.theme}>
-      <div className={classes.themeContainer}>{children}</div>
-    </div>
+    <ThemeProvider theme={theme}>
+      <ApexLegendContext.Provider value={{ apexLegendData, setApexLegend }}>
+        <div className={classes.theme}>
+          <div className={classes.themeContainer}>{children}</div>
+        </div>
+      </ApexLegendContext.Provider>
+    </ThemeProvider>
   );
 };
 

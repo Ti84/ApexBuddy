@@ -61,8 +61,8 @@ const Landing = ({
   return (
     <div className={classes.landing}>
       <section className={classes.searchSection}>
-        <Typography variant="h3" component="h1" className={classes.title}>
-          Apex Buddy
+        <Typography variant="h4" component="h1" className={classes.title}>
+          The best way to find profile and session data for an Apex Legends player.
         </Typography>
         <Paper className={classes.paper}>
           <form onSubmit={onPlayerSearch} className={classes.form}>

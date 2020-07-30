@@ -9,6 +9,7 @@ function App() {
   const [playerName, setPlayerName] = useState('');
   const [playerData, setPlayerData] = useState(null);
   const classes = useAppStyles();
+  console.log(playerData);
 
   const handlePlayerSearch = async () => {
     try {
@@ -21,9 +22,9 @@ function App() {
   };
 
   return (
-    <div className="App" className={classes.app}>
-      <Layout>
-        <Router>
+    <div className={classes.app}>
+      <Router>
+        <Layout>
           <Switch>
             <Route path="/">
               <Landing
@@ -35,8 +36,8 @@ function App() {
               />
             </Route>
           </Switch>
-        </Router>
-      </Layout>
+        </Layout>
+      </Router>
     </div>
   );
 }

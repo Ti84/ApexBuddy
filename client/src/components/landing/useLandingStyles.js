@@ -4,13 +4,13 @@ const useLandingStyles = makeStyles((theme) => ({
   landing: {
     textAlign: 'center',
     overflow: 'auto',
-    height: '100vh'
+    height: '100vh',
   },
   paper: {
     padding: '2px 4px',
     display: 'inline-block',
     marginLeft: 'auto',
-    marginRight: 'auto'
+    marginRight: 'auto',
   },
   input: {
     marginLeft: theme.spacing(1),
@@ -22,7 +22,7 @@ const useLandingStyles = makeStyles((theme) => ({
       top: 55,
       left: -5,
       whiteSpace: 'nowrap',
-      backgroundColor: `rgba(255,255,255, .5)`
+      backgroundColor: `rgba(255,255,255, .5)`,
     },
   },
   iconButton: {
@@ -48,23 +48,28 @@ const useLandingStyles = makeStyles((theme) => ({
     marginLeft: 12,
     flex: 1,
     padding: 10,
-    minWidth: 150
+    minWidth: 150,
   },
   title: {
     marginBottom: 15,
-    color: 'white'
+    color: 'white',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    [theme.breakpoints.up('md')]: {
+      width: '50%',
+    },
   },
   form: {
     display: 'flex',
     width: 500,
     alignItems: 'center',
     [theme.breakpoints.down('sm')]: {
-      width: '90vw'
-    }
+      width: '90vw',
+    },
   },
   searchSection: {
-    marginTop: '35vh'
-  }
+    marginTop: '35vh',
+  },
 }));
 
 export default useLandingStyles;
