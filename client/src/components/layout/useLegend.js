@@ -14,6 +14,13 @@ const useLegend = (name) => {
           imgUrl: 'https://wallpapercave.com/wp/wp4573120.png',
           theme: {},
         });
+        break;
+      default:
+        setApexLegendData({
+          name: 'wraith',
+          imgUrl: 'https://wallpapercave.com/wp/wp4573120.png',
+          theme: {},
+        });
     }
   }, [apexLegend]);
 
