@@ -1,11 +1,6 @@
 import { makeStyles } from '@material-ui/core';
 
 const useLandingStyles = makeStyles((theme) => ({
-  landing: {
-    textAlign: 'center',
-    overflow: 'auto',
-    height: '100vh',
-  },
   paper: {
     padding: '2px 4px',
     display: 'inline-block',

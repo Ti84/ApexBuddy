@@ -3,7 +3,6 @@ import { makeStyles, ThemeProvider, createMuiTheme } from '@material-ui/core';
 import useLegend, { ApexLegendContext } from './useLegend';
 
 const useThemeStyles = makeStyles((theme) => {
-  console.log(theme);
   return {
     theme: {
       backgroundImage: (props) => `url(${props.imgUrl})`,

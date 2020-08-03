@@ -8,17 +8,14 @@ import MenuItem from '@material-ui/core/MenuItem';
 import useLandingStyles from './useLandingStyles';
 import Paper from '@material-ui/core/Paper';
 import { Typography } from '@material-ui/core';
-// import BackgroundImage from './BackgroundImage';
+import { useHistory } from 'react-router-dom';
 
-const Landing = ({
-  handlePlayerSearch,
-  platform,
-  handlePlatformChange,
-  handleNameChange,
-  playerName,
-}) => {
+const Landing = () => {
   const [validationError, setValidationError] = useState('');
   const classes = useLandingStyles();
+  const [platform, setPlatform] = useState('origin');
+  const [playerName, setPlayerName] = useState('');
+  const history = useHistory();
 
   const playerSearchValidation = () => {
     const regexCheck = /^[0-9a-zA-Z]+$/;
@@ -45,7 +42,7 @@ const Landing = ({
     if (playerSearchValidation()) {
       return;
     }
-    handlePlayerSearch();
+    history.push(`/${platform}/${playerName}`);
   };
 
   const onNameChange = (e) => {
@@ -55,11 +52,11 @@ const Landing = ({
       return;
     }
 
-    handleNameChange(e.target.value);
+    setPlayerName(e.target.value);
   };
 
   return (
-    <div className={classes.landing}>
+    <div>
       <section className={classes.searchSection}>
         <Typography variant="h4" component="h1" className={classes.title}>
           The best way to find profile and session data for an Apex Legends player.
@@ -84,12 +81,10 @@ const Landing = ({
             </IconButton>
             <FormControl className={classes.formControl}>
               {' '}
-              {/* className={classes.formControl} */}
-              {/* <Label id="platform-label">Platform</Label> */}
               <Select
                 labelId="platform-label"
                 value={platform}
-                onChange={(e) => handlePlatformChange(e.target.value)}
+                onChange={(e) => setPlatform(e.target.value)}
                 className={classes.select}
                 disableUnderline
               >
@@ -99,11 +94,8 @@ const Landing = ({
               </Select>
             </FormControl>
           </form>
-
-          {/* {JSON.stringify(playerData)} */}
         </Paper>
       </section>
-      {/* <BackgroundImage imgUrl="https://wallpapercave.com/wp/wp4573120.png"/> */}
     </div>
   );
 };

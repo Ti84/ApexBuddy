@@ -11,7 +11,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import logo from '../../assets/logo.png';
 import { ApexLegendContext } from './useLegend';
 
-const useLandingStyles = makeStyles((theme) => {
+const useAppNavStyles = makeStyles((theme) => {
   return {
   toolbar: {
     backgroundColor: theme.palette.background.paper,
@@ -36,14 +36,14 @@ const useLandingStyles = makeStyles((theme) => {
   },
 }});
 const AppNav = () => {
-  const classes = useLandingStyles();
+  const classes = useAppNavStyles();
   const { apexLegendData, setApexLegend } = useContext(ApexLegendContext);
 
   return (
     <Toolbar className={classes.toolbar}>
       <Link component={RouterLink} to="/" className={classes.logo}>
         <img src={logo} alt="site logo" className={classes.logoImage} />
-        <Typography variant="h6">Apex Buddy</Typography>
+        <Typography component="h1" variant="h6">Apex Buddy</Typography>
       </Link>
       <Select
         value={apexLegendData.name || 'wraith'}
