@@ -4,6 +4,7 @@ import Landing from './components/landing/Landing';
 import useAppStyles from './useAppStyles';
 import Layout from './components/layout/Layout';
 import Profile from './components/profile/Profile';
+import NotFoundPage from './components/notfound/NotFoundPage';
 
 const App = () => {
   const classes = useAppStyles();
@@ -19,8 +20,8 @@ const App = () => {
             <Route exact path="/">
               <Landing />
             </Route>
-            <Route path="*">
-              <Landing />
+            <Route>
+              <NotFoundPage />
             </Route>
           </Switch>
         </Layout>

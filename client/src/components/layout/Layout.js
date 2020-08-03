@@ -9,6 +9,7 @@ const useLayoutStyles = makeStyles(() => {
       textAlign: 'center',
       overflow: 'auto',
       height: '100vh',
+      paddingTop: 60
     },
   };
 });
