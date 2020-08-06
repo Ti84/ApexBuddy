@@ -8,7 +8,7 @@ const useLayoutStyles = makeStyles(() => {
     layout: {
       textAlign: 'center',
       overflow: 'auto',
-      height: '100vh',
+      height: 'calc(100vh - 60px)',
       paddingTop: 60
     },
   };
