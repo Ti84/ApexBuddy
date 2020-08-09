@@ -4,8 +4,6 @@ import {
   Typography,
   makeStyles,
   Link,
-  Select,
-  MenuItem,
 } from '@material-ui/core';
 import { Link as RouterLink } from 'react-router-dom';
 import logo from '../../assets/logo.png';
@@ -45,7 +43,7 @@ const AppNav = () => {
         <img src={logo} alt="site logo" className={classes.logoImage} />
         <Typography component="h1" variant="h6">Apex Buddy</Typography>
       </Link>
-      <Select
+      {/* <Select
         value={apexLegendData.name || 'wraith'}
         onChange={(e) => setApexLegend(e.target.value)}
         displayEmpty
@@ -64,7 +62,7 @@ const AppNav = () => {
         <MenuItem value={'revenant'}>Revenant</MenuItem>
         <MenuItem value={'wattson'}>Wattson</MenuItem>
         <MenuItem value={'wraith'}>Wraith</MenuItem>
-      </Select>
+      </Select> */}
     </Toolbar>
   );
 };
