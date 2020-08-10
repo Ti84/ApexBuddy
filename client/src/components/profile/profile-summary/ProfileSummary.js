@@ -1,17 +1,10 @@
 import React from 'react';
-import { useEffect } from 'react';
-import { useState } from 'react';
 
 const ProfileSummary = ({ profileData }) => {
-  const [profileSummaryData, setProfileSummaryData] = useState(null);
-
-  useEffect(() => {
-    if (profileData && profileData.segments) {
-      setProfileSummaryData(
-        profileData.segments.find((segment) => segment.type === 'overview')
-      );
-    }
-  }, [profileData]);
+  let profileSummaryData = null;
+  if (profileData && profileData.segments) {
+    profileSummaryData = profileData.segments.find((segment) => segment.type === 'overview');
+  }
 
   console.log('overview data', profileSummaryData);
 

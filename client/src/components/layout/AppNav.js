@@ -35,7 +35,7 @@ const useAppNavStyles = makeStyles((theme) => {
 }});
 const AppNav = () => {
   const classes = useAppNavStyles();
-  const { apexLegendData, setApexLegend } = useContext(ApexLegendContext);
+  // const { apexLegendData, setApexLegend } = useContext(ApexLegendContext);
 
   return (
     <Toolbar className={classes.toolbar}>
