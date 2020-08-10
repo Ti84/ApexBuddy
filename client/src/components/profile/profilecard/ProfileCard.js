@@ -1,20 +1,18 @@
 import React from 'react';
-import { Card } from '@material-ui/core';
+import { Avatar, Card } from '@material-ui/core';
 
-const ProfileCard = ({
-  profileData: {
-    platformInfo: { platformSlug, platformUserHandle, avatarUrl },
-  },
-}) => {
-  console.log(platformSlug);
+const ProfileCard = ({ profileData }) => {
+
+  const {
+    platformInfo: { avatarUrl, platformUserHandle, platformSlug },
+  } = profileData;
+
   return (
     <Card>
-      <div>
-        <img src={avatarUrl} alt="User Profile" />
-      </div>
-      <div>
-        {platformSlug}
-        {platformUserHandle}
+      <Avatar alt="Origin Icon" src={avatarUrl} />
+      <div className="profile-info">
+        <span>{platformUserHandle}</span>
+        <span>{platformSlug}</span>
       </div>
     </Card>
   );

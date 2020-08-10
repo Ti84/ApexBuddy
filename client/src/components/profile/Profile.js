@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import useProfileStyles from './useProfileStyles';
-import { useParams, Link as RouterLink } from 'react-router-dom';
-import { CircularProgress, Card, Typography, Link } from '@material-ui/core';
+import { useParams } from 'react-router-dom';
+import {
+  CircularProgress,
+} from '@material-ui/core';
 import ProfileCard from './profilecard/ProfileCard';
+import ErrorCard from '../error-card/ErrorCard';
+import ProfileSummary from './profile-summary/ProfileSummary';
+import ProfileLegends from './profile-legends/ProfileLegends';
 
 const Profile = () => {
   const classes = useProfileStyles();
@@ -18,16 +23,17 @@ const Profile = () => {
         const res = await fetch(
           `/players/${platform.toLowerCase()}/${playerName}`
         );
-        const data = await res.json();
-        if (data && data.errors) {
-          setErrorMsg(data.errors[0].message);
-        } else if (data) {
-          setProfileData(data);
+        const resData = await res.json();
+        if (resData && resData.errors) {
+          setErrorMsg(resData.errors[0].message);
+        } else if (resData && resData.data) {
+          setProfileData(resData.data);
         }
         setLoading(false);
       } catch (e) {
         console.error(e);
         setErrorMsg('Something bad happened :C, please try your search again.');
+        setLoading(false);
       }
     };
     loadPlayerData();
@@ -40,28 +46,17 @@ const Profile = () => {
           <CircularProgress />
         </section>
       )}
-      {!loading && profileData && (
-        <section>
-          <ProfileCard profileData={profileData && profileData.data} />
-      </section>
-      )}
       {!loading && errorMsg && (
         <section className={classes.offCenter}>
-          <Card className={classes.cardContainer}>
-            <div className={classes.spacerFifteen}>
-              <span className={classes.emoji} role="img" aria-label="Sad face">
-                😥
-              </span>
-            </div>
-            <div>
-              <Typography variant="h5">{errorMsg}</Typography>
-            </div>
-            <div>
-              <Link className={classes.retryLink} component={RouterLink} to="/">
-                Click here to try again
-              </Link>
-            </div>
-          </Card>
+          <ErrorCard errorMsg={errorMsg} />
+        </section>
+      )}
+      {!loading && profileData && (
+        <section>
+          {/* TODO: Refactor to set this data when fetching in profile useEffect to avoid extra render on init of these components */}
+          <ProfileCard profileData={profileData} />
+          <ProfileSummary profileData={profileData} />
+          <ProfileLegends profileData={profileData} />
         </section>
       )}
     </>

@@ -13,15 +13,8 @@ const useProfileStyles = makeStyles((theme) => ({
     padding: '25px 15px',
     overflow: 'auto',
   },
-  emoji: {
-    fontSize: '50px',
-    marginBottom: '15px'
-  },
   spacerFifteen: {
     marginBottom: '15px'
-  },
-  retryLink: {
-    fontSize: '20px'
   }
 }));
 
